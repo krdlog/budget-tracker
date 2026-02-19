@@ -1,0 +1,13 @@
+body{margin:0;font-family:Arial;background:#000;color:#fff}
+.hidden{display:none}
+.centered{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh}
+input,select,button{margin:5px;padding:8px}
+button{cursor:pointer;background:gold;border:none}
+.green{color:#00ff88}
+.red{color:#ff4d4d}
+#sidebar{background:#111;padding:10px;width:200px;float:left;height:100vh}
+main{margin-left:200px;padding:15px}
+.cards{display:flex;gap:20px}
+.dropdown{position:absolute;background:#222;padding:10px}
+.transactions ul{list-style:none;padding:0}
+.transactions li{padding:5px;border-bottom:1px solid #333}

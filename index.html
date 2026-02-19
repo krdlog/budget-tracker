@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Tracker Pro</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div id="loginPage" class="centered">
+  <h2>Secure Login</h2>
+  <input id="loginId" placeholder="Email or Phone">
+  <input id="password" type="password" placeholder="Password">
+  <label><input type="checkbox" id="rememberMe"> Remember Me</label>
+  <button onclick="Auth.login()">Login</button>
+</div>
+
+<div id="app" class="hidden">
+  <aside id="sidebar">
+    <h3>💰 Finance Pro</h3>
+    <button onclick="UI.toggleSidebar()">☰</button>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <h2 id="welcomeUser"></h2>
+        <small id="weeklyInsight"></small>
+      </div>
+      <div class="menu">
+        <button onclick="UI.toggleMenu()">⋮</button>
+        <div id="menuDropdown" class="dropdown hidden">
+          <button onclick="App.exportData()">Export Data</button>
+          <button onclick="App.resetData()">Reset Data</button>
+          <button onclick="Auth.logout()">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="cards">
+      <div>Balance<br><strong id="balance"></strong></div>
+      <div>Income<br><strong id="income" class="green"></strong></div>
+      <div>Expense<br><strong id="expense" class="red"></strong></div>
+    </section>
+
+    <section>
+      <canvas id="chart" height="100"></canvas>
+    </section>
+
+    <section class="transactions">
+      <h4>Add Transaction</h4>
+      <input id="desc" placeholder="Description">
+      <input id="amount" type="number" step="0.01" placeholder="Amount">
+      <select id="category">
+        <option>🍔 Food</option>
+        <option>🚗 Transport</option>
+        <option>🏠 Rent</option>
+        <option>💡 Bills</option>
+        <option>🎮 Entertainment</option>
+        <option>💼 Salary</option>
+        <option>📈 Investment</option>
+      </select>
+      <select id="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <button onclick="App.addTransaction()">Add</button>
+
+      <h4>History</h4>
+      <select onchange="App.sortTransactions(this.value)">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+        <option value="amount">Amount</option>
+      </select>
+
+      <ul id="txList"></ul>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
